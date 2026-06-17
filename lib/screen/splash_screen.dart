@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mind_chat/screen/home_screen.dart';
+import 'package:mind_chat/screen/onboarding_screen.dart';
 import 'package:mind_chat/widget/custom_loading.dart';
 
 import '../helper/global.dart';
@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 2),() {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const HomeScreen())
+        MaterialPageRoute(builder: (_) => const OnboardingScreen())
       );
     });
   }
