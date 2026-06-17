@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mind_chat/screen/home_screen.dart';
+import 'package:mind_chat/widget/custom_loading.dart';
 
 import '../helper/global.dart';
 
@@ -31,17 +32,26 @@ class _SplashScreenState extends State<SplashScreen> {
     //Initialize Device Size
     mq = MediaQuery.sizeOf(context);
     return Scaffold(
-      body: Center(
-        child: Card(
-          color:Colors.blue,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20))),
-          child: Padding(
-            padding: EdgeInsets.all(mq.width * .05),
-            child: Image.asset('assets/images/logo.png',width: mq.width * .4),
-          )
+      body: SizedBox(
+        width: double.maxFinite,
+        child: Column(
+          children: [
+            Spacer(), //space create korar jonno
+
+            Card(
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(20))
+              ),
+              child: Padding(padding: EdgeInsets.all(mq.width * .05),
+                child: Image.asset('assets/images/logo.png',width: mq.width * .4,),
+              ),
+            ),
+            Spacer(),
+            CustomLoading(),
+            Spacer(),
+          ],
         ),
-      ),
+      )
     );
   }
 }
