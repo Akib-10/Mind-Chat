@@ -1,78 +1,111 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mind_chat/helper/global.dart';
+import 'package:mind_chat/model/onboard.dart';
+import 'package:mind_chat/screen/home_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final c = PageController();
+    final list = [
+      //onboarding 1
+      Onboard(
+        title: 'Ask Me Anything',
+        subtitle:'I can be your best friend & You can ask me anything & I will help you',
+        lottie: 'ai_ask_me',
+      ),
+      //onboarding 2
+      Onboard(
+        title: 'Imagination to Reality',
+        subtitle:'Just Imagine anything & let me know, I will create something wonderful for you!',
+        lottie: 'ai_play',
+      ),
+    ];
+
     return Scaffold(
-      body:Column(
-        children: [
-          Lottie.asset('assets/lottie/ai_ask_me.json',
-          height: mq.height * 0.6
-          ),
-
-          const Text(
-            'Ask Me Anything',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w900,
-              letterSpacing: .5,
-            ),
-          ),
-
-          SizedBox(
-            height: mq.height * .015,
-          ),
-
-          SizedBox(
-            width: mq.width * .7,
-            child: const Text(
-              'I can be your best friend & You can ask me anything & I will help you',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 13.5,
-                letterSpacing: .5,
-                color: Colors.black87,
-              ),
-            ),
-          ),
-          const Spacer(),
-          // for dots
-          Wrap( // children ke row er moto sajay
-            spacing: 10, // child er maje gap deoyar jonno
-            children: List.generate(
-                3,
-                (i) => Container(
-                  width: 10,
-                  height: 8,
-                  decoration: const BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.all(Radius.circular(5))
-                  ),
-                )
-            ),
-          ),
-          const Spacer(),
-          //for button
-          ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                shape: const StadiumBorder(),
-                elevation: 0,
-                backgroundColor: Colors.blueAccent,
-                textStyle: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black87,
+      body:PageView.builder( // page horizontally swap korar jonno list view er moto
+        controller: c,
+          itemCount: list.length, // uporer list er length onujayi page bananor jonno
+          itemBuilder: (ctx,ind){
+            final isLast = ind == list.length - 1;
+            return Column(
+              children: [
+                Lottie.asset('assets/lottie/${list[ind].lottie}.json',
+                    height: mq.height * 0.6,
+                  width: isLast ? mq.width * .7 : null, //last tar json choto korar jonno
                 ),
-                minimumSize: Size(mq.width * .4, 50),
-              ),
-              onPressed: () {} , child: Text('Next')),
-          const Spacer(),
-        ],
-      )
+
+                Text(
+                  list[ind].title,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: .5,
+                  ),
+                ),
+
+                SizedBox(
+                  height: mq.height * .015,
+                ),
+
+                SizedBox(
+                  width: mq.width * .7,
+                  child: Text(
+                    list[ind].subtitle,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 13.5,
+                      letterSpacing: .5,
+                      color: Colors.black87,
+                    ),
+                  ),
+                ),
+                const Spacer(),
+                // for dots
+                Wrap( // children ke row er moto sajay
+                  spacing: 10, // child er maje gap deoyar jonno
+                  children: List.generate(
+                      list.length, // list er page onujayi dot
+                          (i) => Container(
+                        width: i == ind ? 15 : 10, // je number page oi number er dot 15 size dibe
+                        height: 8,
+                        decoration: BoxDecoration(
+                            color: i==ind ? Colors.blue: Colors.grey,
+                            borderRadius: const BorderRadius.all(Radius.circular(5))
+                        ),
+                      )
+                  ),
+                ),
+                const Spacer(),
+                //for button
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: const StadiumBorder(),
+                      elevation: 0,
+                      backgroundColor: Colors.blueAccent,
+                      textStyle: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
+                      minimumSize: Size(mq.width * .4, 50),
+                    ),
+                    onPressed: () {
+                      if(isLast){
+                        Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (_) => const HomeScreen()));
+                      }else{
+                        c.nextPage(duration: Duration(milliseconds: 600),
+                            curve: Curves.ease);
+                      }
+                    } , child: Text(isLast ? 'Finish' : 'Next')), // jodi last page hoy thaole button e finish dekhabe
+                const Spacer(),
+              ],
+            );
+          })
     );
   }
 }
