@@ -37,6 +37,12 @@ dependencies:
   cupertino_icons: ^1.0.8
 #  For using lottie animations
   lottie: ^3.3.3
+#  For hive Database
+  hive: ^4.0.0-dev.2
+  isar_flutter_libs: ^4.0.0-dev.13
+#  For Accessing Storage Path
+  path_provider: ^2.1.0
+
 
 dev_dependencies:
   flutter_test:

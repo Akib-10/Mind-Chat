@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mind_chat/screen/splash_screen.dart';
 
+import 'helper/pref.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Init Hive
+   Pref.initialize();
+
   //Flutter api use korar age framework initialize hoise naki dekhte
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   //full screen mode e calay
