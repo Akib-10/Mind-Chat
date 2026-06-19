@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mind_chat/helper/global.dart';
 import 'package:mind_chat/model/onboard.dart';
@@ -95,8 +97,11 @@ class OnboardingScreen extends StatelessWidget {
                     ),
                     onPressed: () {
                       if(isLast){
-                        Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(builder: (_) => const HomeScreen()));
+                        // Navigator.of(context).pushReplacement(
+                        //     MaterialPageRoute(builder: (_) => const HomeScreen()));
+                        Get.off( () =>
+                           const HomeScreen()
+                        );
                       }else{
                         c.nextPage(duration: Duration(milliseconds: 600),
                             curve: Curves.ease);
