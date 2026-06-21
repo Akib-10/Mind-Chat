@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mind_chat/widget/home_card.dart';
 
 import '../helper/global.dart';
 import '../helper/pref.dart';
@@ -49,7 +50,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ))
         ],
       ),
-      body: Center(child: Text('Welcome to Home Screen'),)
+      body: ListView(
+        padding: EdgeInsets.symmetric(
+            horizontal: mq.width *.04,
+            vertical: mq.height * .015
+        ),
+        children: [const HomeCard()],
+      )
     );
   }
 }
