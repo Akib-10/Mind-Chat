@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mind_chat/model/home_type.dart';
 
@@ -12,6 +13,8 @@ class HomeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Animate.restartOnHotReload = true;
+
     return Card(
       color: Colors.blue.withOpacity(.2),
       elevation: 0,
@@ -62,6 +65,7 @@ class HomeCard extends StatelessWidget {
             ),
           ]
       ),
-    );
+      //For animation
+    ).animate().scale(duration: 1.seconds);
   }
 }
