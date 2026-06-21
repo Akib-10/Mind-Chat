@@ -44,6 +44,8 @@ dependencies:
   path_provider: ^2.1.0
 #  For state Management
   get: ^4.7.3
+#  For Animation in text and Widget
+  flutter_animate: ^4.5.2
 
 
 dev_dependencies:
