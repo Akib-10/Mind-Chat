@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../helper/global.dart';
 import '../helper/pref.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,7 +21,34 @@ class _HomeScreenState extends State<HomeScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    //initializing device size
+    mq = MediaQuery.sizeOf(context);
+    return Scaffold(
+      //app bar
+      appBar: AppBar(
+        elevation: 1,
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        title: const Text(
+          appName,
+          style: TextStyle(
+            color: Colors.blue,
+            fontSize: 20,
+            fontWeight: FontWeight.w500
+          ),
+        ),
+          //actions button
+        actions: [
+          IconButton(
+          padding: const EdgeInsets.only(right: 10),
+          onPressed: () {},
+          icon: const Icon(
+            Icons.brightness_4_rounded,
+            color: Colors.blue,
+            size: 26,
+          ))
+        ],
+      ),
       body: Center(child: Text('Welcome to Home Screen'),)
     );
   }
