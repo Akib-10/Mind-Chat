@@ -1,30 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:mind_chat/model/home_type.dart';
 
 import '../helper/global.dart';
 
 class HomeCard extends StatelessWidget {
-  const HomeCard({super.key});
+
+  final HomeType homeType;
+
+  const HomeCard({super.key, required this.homeType});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       color: Colors.blue.withOpacity(.2),
       elevation: 0,
+      margin: EdgeInsets.only(bottom: mq.height * .02),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(20))
       ),
-      child: Row(
+      child: homeType.leftAlign ? Row(
         children:[
           //Lottie
-          Lottie.asset('assets/lottie/ai_hand_waving.json',
-                width: mq.width*.35
+          Container(
+            width: mq.width*.35,
+            padding: homeType.padding,
+            child: Lottie.asset('assets/lottie/${homeType.lottie}',),
           ),
           const Spacer(),
           //title
-          const Text(
-            'AI ChatBot',
-            style: TextStyle(
+           Text(
+            homeType.title,
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w500,
               letterSpacing: 1
@@ -32,6 +39,28 @@ class HomeCard extends StatelessWidget {
           ),
           const Spacer(flex: 2,),
         ]
+      ):
+      Row(
+          children:[
+            const Spacer(flex: 2,),
+            //title
+            Text(
+                homeType.title,
+                style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 1
+                )
+            ),
+            const Spacer(),
+
+            //Lottie
+            Container(
+              width: mq.width*.35,
+              padding: homeType.padding,
+              child: Lottie.asset('assets/lottie/${homeType.lottie}',),
+            ),
+          ]
       ),
     );
   }

@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mind_chat/model/home_type.dart';
 import 'package:mind_chat/widget/home_card.dart';
 
 import '../helper/global.dart';
@@ -55,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
             horizontal: mq.width *.04,
             vertical: mq.height * .015
         ),
-        children: [const HomeCard()],
+        children: HomeType.values.map((e) => HomeCard(homeType: e)).toList(),
       )
     );
   }
