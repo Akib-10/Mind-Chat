@@ -37,7 +37,7 @@ extension MyHomeType on HomeType{
     HomeType.aiTranslator => EdgeInsets.zero,
   };
 
-  //For Features
+  //For Features Navigation
   VoidCallback get onTap => switch (this) {
     HomeType.aiChatBot => () => Get.to(() => const ChatbotFeature()),
     HomeType.aiImage => () => Get.to(() => const ImageFeature()),
