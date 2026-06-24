@@ -46,6 +46,8 @@ dependencies:
   get: ^4.7.3
 #  For Animation in text and Widget
   flutter_animate: ^4.5.2
+#  For google app_set_id:
+  google_generative_ai: ^0.4.7
 
 
 dev_dependencies:

@@ -15,7 +15,8 @@ class _TranslatorFeatureState extends State<TranslatorFeature> {
     return Scaffold(
 
         appBar: AppBar(
-          title: const Text('Multi Language Translator'),
+          centerTitle: true,
+          title: const Text('Translator',),
         ),
         body: ListView(
           physics: const BouncingScrollPhysics(),
