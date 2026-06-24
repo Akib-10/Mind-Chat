@@ -7,5 +7,13 @@ class ChatbotService {
   late final GenerativeModel _model;
   late ChatSession _chat;
 
+  ChatbotService() {
+    _model = GenerativeModel(
+      model: 'gemini-2.0-flash',
+      apiKey: _apiKey,
+    );
+    _chat = _model.startChat();
+  }
+
 
 }
