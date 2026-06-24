@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mind_chat/helper/global.dart';
 
+import '../../widget/custom_btn.dart';
+
 class ImageFeature extends StatefulWidget {
   const ImageFeature({super.key});
 
@@ -45,10 +47,10 @@ class _ImageFeatureState extends State<ImageFeature> {
                 height: mq.height * .5,
                 alignment: Alignment.center,
                 child: Lottie.asset('assets/lottie/ai_play.json',
-                    height: mq.height * .3))
-
+                    height: mq.height * .3)
+            ),
             //create btn
-
+            CustomBtn(text: 'Create', onTap: (){})
         ]
         )
     );
