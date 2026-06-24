@@ -15,5 +15,24 @@ class ChatbotService {
     _chat = _model.startChat();
   }
 
+  void clearChat() {
+    _chat = _model.startChat();
+  }
 
+  Future<ChatMessage> sendMessage(String text) async {
+    try {
+      final response = await _chat.sendMessage(Content.text(text));
+      return ChatMessage(
+        text: response.text ?? 'No response received.',
+        isUser: false,
+        timestamp: DateTime.now(),
+      );
+    } catch (e) {
+      return ChatMessage(
+        text: '⚠️ Error: ${e.toString()}',
+        isUser: false,
+        timestamp: DateTime.now(),
+      );
+    }
+  }
 }
