@@ -20,10 +20,11 @@ class _ChatbotFeatureState extends State<ChatbotFeature> {
       floatingActionButton: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Row(children: [
-            Expanded(
+            //text input field
+            Expanded( //khali jaigai text ashar jonno
                 child: TextFormField(
                   textAlign: TextAlign.center,
-                  onTapOutside: (e) => FocusScope.of(context).unfocus(),
+                  onTapOutside: (e) => FocusScope.of(context).unfocus(),//keyboard hide er jonno
                   decoration: const InputDecoration(
                     isDense: true,
                     hintText: 'Ask me anything you want.....',

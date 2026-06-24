@@ -40,6 +40,7 @@ extension MyHomeType on HomeType{
   //For Features Navigation
   VoidCallback get onTap => switch (this) {
     HomeType.aiChatBot => () => Get.to(() => const ChatbotFeature()),
+    // Jodi aichatbot click hoy tahole ChatbotFeature page e cole jabe
     HomeType.aiImage => () => Get.to(() => const ImageFeature()),
     HomeType.aiTranslator => () => Get.to(() => const TranslatorFeature()),
   };
