@@ -13,7 +13,7 @@ class CustomBtn extends StatelessWidget {
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             shape: const StadiumBorder(),
-            elevation: 0,
+            elevation: 0, // shadow removw kore
             textStyle: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,
