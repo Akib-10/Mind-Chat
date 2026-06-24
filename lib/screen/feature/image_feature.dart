@@ -46,6 +46,9 @@ class _ImageFeatureState extends State<ImageFeature> {
                 alignment: Alignment.center,
                 child: Lottie.asset('assets/lottie/ai_play.json',
                     height: mq.height * .3))
+
+            //create btn
+
         ]
         )
     );

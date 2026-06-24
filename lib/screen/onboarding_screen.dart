@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:mind_chat/helper/global.dart';
 import 'package:mind_chat/model/onboard.dart';
 import 'package:mind_chat/screen/home_screen.dart';
+import 'package:mind_chat/widget/custom_btn.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -83,30 +84,18 @@ class OnboardingScreen extends StatelessWidget {
                 ),
                 const Spacer(),
                 //for button
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: const StadiumBorder(),
-                      elevation: 0,
-                      backgroundColor: Colors.blueAccent,
-                      textStyle: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                      ),
-                      minimumSize: Size(mq.width * .4, 50),
-                    ),
-                    onPressed: () {
-                      if(isLast){
-                        // Navigator.of(context).pushReplacement(
-                        //     MaterialPageRoute(builder: (_) => const HomeScreen()));
-                        Get.off( () =>
-                           const HomeScreen()
-                        );
-                      }else{
+                CustomBtn(onTap: () {
+                    if(isLast){
+                      // Navigator.of(context).pushReplacement(
+                      //     MaterialPageRoute(builder: (_) => const HomeScreen()));
+                      Get.off( () =>
+                        const HomeScreen()
+                      );
+                    }else{
                         c.nextPage(duration: Duration(milliseconds: 600),
-                            curve: Curves.ease);
-                      }
-                    } , child: Text(isLast ? 'Finish' : 'Next')), // jodi last page hoy thaole button e finish dekhabe
+                        curve: Curves.ease);
+                    }
+                } ,text: isLast ? 'Finish' : 'Next'),
                 const Spacer(),
               ],
             );
