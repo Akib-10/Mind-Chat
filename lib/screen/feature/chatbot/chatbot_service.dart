@@ -19,5 +19,42 @@ class ChatbotService {
     );
   }
 
+  /// SEND & returns a ChatMessage
+  Future<ChatMessage> sendMessage(String userMessage) async {
+    try {
+      String prompt = """You are an AI Study Tutor.
+Help students with:
+- math explanation
+- programming help
+- exam preparation tips
+- note summarization
+Explain answers clearly and simply.
 
+Conversation history:
+$_memory
+
+Student question:
+$userMessage
+""";
+      //gemini ke request pathanor jonno
+      final response = await _model.generateContent([Content.text(prompt)]);
+      final text = response.text ?? "AI could not generate a response.";
+
+      //memory update korar jonno
+      _memory += "\nStudent: $userMessage\nAI: $text";
+
+      return ChatMessage(
+        text: text,
+        isUser: false,
+        timestamp: DateTime.now(),
+      );
+
+    } catch (e) {
+      return ChatMessage(
+        text: "Error generating AI response: $e",
+        isUser: false,
+        timestamp: DateTime.now(),
+      );
+    }
+  }
 }
