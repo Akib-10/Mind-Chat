@@ -47,7 +47,9 @@ dependencies:
 #  For Animation in text and Widget
   flutter_animate: ^4.5.2
 #  For google app_set_id:
-  google_generative_ai: ^0.4.7
+  google_generative_ai: ^0.4.6
+  http: ^1.2.0
+  flutter_dotenv: ^5.1.0
 
 
 dev_dependencies:
@@ -77,6 +79,7 @@ flutter:
   assets:
      - assets/images/
      - assets/lottie/
+     - .env
 #     - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
