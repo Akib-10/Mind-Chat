@@ -3,11 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:mind_chat/helper/global.dart';
 import 'package:mind_chat/screen/splash_screen.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'helper/pref.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized(); //required before any async
+  await dotenv.load(fileName: ".env");
   // Init Hive
    Pref.initialize();
 
