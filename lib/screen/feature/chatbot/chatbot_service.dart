@@ -22,6 +22,7 @@ class ChatbotService {
   /// SEND & returns a ChatMessage
   Future<ChatMessage> sendMessage(String userMessage) async {
     try {
+      //Ai er behavior and personality er jonno
       String prompt = """You are an AI Study Tutor.
 Help students with:
 - math explanation
@@ -57,4 +58,7 @@ $userMessage
       );
     }
   }
+
+
+
 }
