@@ -205,5 +205,74 @@ class _ChatbotFeatureState extends State<ChatbotFeature> {
     );
   }
 
+  Widget _buildTypingIndicator() {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        decoration: BoxDecoration(
+          color: Colors.grey.shade200,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        child: const Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _DotPulse(delay: 0),
+            SizedBox(width: 4),
+            _DotPulse(delay: 150),
+            SizedBox(width: 4),
+            _DotPulse(delay: 300),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
+// Dots(.....) animation er jonno
+class _DotPulse extends StatefulWidget {
+  final int delay;
+  const _DotPulse({required this.delay});
+
+  @override
+  State<_DotPulse> createState() => _DotPulseState();
+}
+
+class _DotPulseState extends State<_DotPulse>
+    with SingleTickerProviderStateMixin { //animation control er jonno
+  // animation control korar jonno
+  late AnimationController _ctrl;
+  // animation er value
+  late Animation<double> _anim;
+
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(
+      //Screen Visible na hole animation pause korar jonno
+      vsync: this,
+      duration: const Duration(milliseconds: 600),
+    );
+    Future.delayed(Duration(milliseconds: widget.delay), () {
+      // user screen e ache naki janar jonno mounted use kori
+      if (mounted) _ctrl.repeat(reverse: true);
+    });
+    // bots 1st e halka pore aste aste full dekhar jonno
+    _anim = Tween(begin: 0.4, end: 1.0).animate(_ctrl);
+  }
+
+  @override
+  void dispose() { //AnimationController Memory theke remove korar jonno
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeTransition(
+      opacity: _anim,
+      child: const CircleAvatar(radius: 4, backgroundColor: Colors.grey),
+    );
+  }
 }
