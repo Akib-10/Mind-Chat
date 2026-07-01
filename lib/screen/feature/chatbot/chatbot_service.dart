@@ -60,5 +60,54 @@ $userMessage
   }
 
 
+  //eikhan theke pore arek din
+  /// SUMMARIZE A PDF
+  //////////////////////////////////////////////////////////
+  Future<String> summarizePDF(String pdfText) async {
+    try {
+      String prompt = """Summarize the following study notes clearly and concisely for a student:
+$pdfText
+""";
 
+      final response = await _model.generateContent([Content.text(prompt)]);
+      return response.text ?? "Could not summarize PDF.";
+
+    } catch (e) {
+      return "Error summarizing PDF: $e";
+    }
+  }
+
+  //////////////////////////////////////////////////////////
+  /// ANALYZE AN IMAGE (Gemini Vision)
+  //////////////////////////////////////////////////////////
+  Future<String> analyzeImage(File imageFile) async {
+    try {
+      final bytes = await imageFile.readAsBytes();
+
+      final content = [
+        Content.multi([
+          TextPart("""Explain the content of this image.
+If it contains:
+- math diagrams
+- programming code
+- study notes
+Explain it simply for a student."""),
+          DataPart("image/png", bytes),
+        ])
+      ];
+
+      final response = await _model.generateContent(content);
+      return response.text ?? "Could not analyze image.";
+
+    } catch (e) {
+      return "Error analyzing image: $e";
+    }
+  }
+
+  //////////////////////////////////////////////////////////
+  /// CLEAR CONVERSATION MEMORY
+  //////////////////////////////////////////////////////////
+  void clearChat() {
+    _memory = "";
+  }
 }
