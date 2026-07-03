@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:mind_chat/screen/feature/image_feature.dart';
-import 'package:mind_chat/screen/feature/pdf_feature.dart';
 import 'package:mind_chat/screen/feature/translator_feature.dart';
 
 import '../screen/feature/chatbot/chatbot_feature.dart';
+import '../screen/feature/chatbot/pdf_feature.dart';
 //For adding and decorate cards in home_screen
 enum HomeType {aiChatBot, aiImage, aiTranslator, aiPdf}
 
