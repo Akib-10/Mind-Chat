@@ -43,7 +43,7 @@ class _ChatbotFeatureState extends State<ChatbotFeature> {
     _controller.clear();
     _scrollToBottom();
 
-    // ✅ FIXED: sendMessage now returns ChatMessage directly
+    // sendMessage now returns ChatMessage directly
     final reply = await _service.sendMessage(text);
 
     setState(() {

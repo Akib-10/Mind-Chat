@@ -13,8 +13,9 @@ extension MyHomeType on HomeType{
   //title
   String get title => switch (this){
     HomeType.aiChatBot => 'AI ChatBot',
-  HomeType.aiImage => 'AI Image Creator',
-  HomeType.aiTranslator => 'Language Translator',
+    HomeType.aiImage => 'AI Image Creator',
+    HomeType.aiTranslator => 'Language Translator',
+    HomeType.aiImage => 'AI PDF & Image',
   };
 
   //lottie
@@ -22,6 +23,7 @@ extension MyHomeType on HomeType{
     HomeType.aiChatBot => 'ai_hand_waving.json',
     HomeType.aiImage => 'ai_play.json',
     HomeType.aiTranslator => 'ai_ask_me.json',
+    HomeType.aiTranslator => 'ai_live_setting.json',
   };
 
   //for alignment
@@ -29,6 +31,7 @@ extension MyHomeType on HomeType{
     HomeType.aiChatBot => true,
     HomeType.aiImage => false,
     HomeType.aiTranslator => true,
+    HomeType.aiImage => false,
   };
 
   //for Padding
@@ -36,6 +39,7 @@ extension MyHomeType on HomeType{
     HomeType.aiChatBot => EdgeInsets.zero,
     HomeType.aiImage => const EdgeInsets.all(20),
     HomeType.aiTranslator => EdgeInsets.zero,
+    HomeType.aiImage => const EdgeInsets.all(20),
   };
 
   //For Features Navigation
