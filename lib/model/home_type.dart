@@ -48,6 +48,7 @@ extension MyHomeType on HomeType{
     // Jodi aichatbot click hoy tahole ChatbotFeature page e cole jabe
     HomeType.aiImage => () => Get.to(() => const ImageFeature()),
     HomeType.aiTranslator => () => Get.to(() => const TranslatorFeature()),
+    HomeType.aiTranslator => () => Get.to(() => const pdf_feature()),
   };
 
 }
