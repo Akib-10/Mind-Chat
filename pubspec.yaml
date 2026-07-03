@@ -51,7 +51,7 @@ dependencies:
   http: ^1.2.0
   flutter_dotenv: ^5.1.0
 #  For pdf
-  file_picker: ^11.0.2
+  file_picker: ^8.1.2
 
 
 dev_dependencies:
