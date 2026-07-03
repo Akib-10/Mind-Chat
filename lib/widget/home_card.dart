@@ -18,12 +18,12 @@ class HomeCard extends StatelessWidget {
     return Card(
       color: Colors.blue.withOpacity(.2),
       elevation: 0,
-      margin: EdgeInsets.only(bottom: mq.height * .02),
+      margin: EdgeInsets.only(bottom: mq.height * .01),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(20))
       ),
       child: InkWell(
-        borderRadius: const BorderRadius.all(Radius.circular(20)),
+        borderRadius: const BorderRadius.all(Radius.circular(50)),
         onTap: homeType.onTap,
         child: homeType.leftAlign ? Row(
             children:[

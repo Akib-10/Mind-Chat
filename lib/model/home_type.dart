@@ -3,11 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:mind_chat/screen/feature/image_feature.dart';
+import 'package:mind_chat/screen/feature/pdf_feature.dart';
 import 'package:mind_chat/screen/feature/translator_feature.dart';
 
 import '../screen/feature/chatbot/chatbot_feature.dart';
 //For adding and decorate cards in home_screen
-enum HomeType {aiChatBot, aiImage, aiTranslator}
+enum HomeType {aiChatBot, aiImage, aiTranslator, aiPdf}
 
 extension MyHomeType on HomeType{
   //title
@@ -15,7 +16,7 @@ extension MyHomeType on HomeType{
     HomeType.aiChatBot => 'AI ChatBot',
     HomeType.aiImage => 'AI Image Creator',
     HomeType.aiTranslator => 'Language Translator',
-    HomeType.aiImage => 'AI PDF & Image',
+    HomeType.aiPdf => 'PDF & Images',
   };
 
   //lottie
@@ -23,7 +24,7 @@ extension MyHomeType on HomeType{
     HomeType.aiChatBot => 'ai_hand_waving.json',
     HomeType.aiImage => 'ai_play.json',
     HomeType.aiTranslator => 'ai_ask_me.json',
-    HomeType.aiTranslator => 'ai_live_setting.json',
+    HomeType.aiPdf => 'ai_live_setting.json',
   };
 
   //for alignment
@@ -31,7 +32,7 @@ extension MyHomeType on HomeType{
     HomeType.aiChatBot => true,
     HomeType.aiImage => false,
     HomeType.aiTranslator => true,
-    HomeType.aiImage => false,
+    HomeType.aiPdf => false,
   };
 
   //for Padding
@@ -39,7 +40,7 @@ extension MyHomeType on HomeType{
     HomeType.aiChatBot => EdgeInsets.zero,
     HomeType.aiImage => const EdgeInsets.all(20),
     HomeType.aiTranslator => EdgeInsets.zero,
-    HomeType.aiImage => const EdgeInsets.all(20),
+    HomeType.aiPdf => const EdgeInsets.all(20),
   };
 
   //For Features Navigation
@@ -48,7 +49,7 @@ extension MyHomeType on HomeType{
     // Jodi aichatbot click hoy tahole ChatbotFeature page e cole jabe
     HomeType.aiImage => () => Get.to(() => const ImageFeature()),
     HomeType.aiTranslator => () => Get.to(() => const TranslatorFeature()),
-    HomeType.aiTranslator => () => Get.to(() => const pdf_feature()),
+    HomeType.aiPdf => () => Get.to(() => const PdfFeature()),
   };
 
 }
