@@ -58,7 +58,6 @@ class ChatbotService {
   }
 
   /// ANALYZE A DOCUMENT (PDF or image) WITH AN OPTIONAL QUESTION
-  ///
   /// Gemini can read PDFs and images directly as inline file data,
   /// so there's no need for a separate text-extraction package.
 
