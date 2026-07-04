@@ -116,6 +116,56 @@ class _PdfFeatureState extends State<PdfFeature> {
 
 
 
+  Widget _buildInputBar() {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(8, 4, 8, 12),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          IconButton(
+            onPressed: _isLoading ? null : _pickFiles,
+            icon: const Icon(Icons.attach_file),
+            tooltip: 'Attach PDF/Image',
+          ),
+          Expanded( // majer jayga borar jonno
+            child: TextFormField(
+              controller: _controller,
+              textAlign: TextAlign.left,
+              onTapOutside: (e) => FocusScope.of(context).unfocus(),
+              onFieldSubmitted: (_) => _sendMessage(),
+              maxLines: null,
+              decoration: const InputDecoration(
+                isDense: true,
+                hintText: 'Type your question here...',
+                hintStyle: TextStyle(fontSize: 14),
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding:
+                EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(50)),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(width: 8),
+          CircleAvatar(
+            radius: 24,
+            backgroundColor: _isLoading ? Colors.grey : null,
+            child: IconButton(
+              onPressed: _isLoading ? null : _sendMessage,
+              icon: Icon(
+                _isLoading ? Icons.hourglass_top : Icons.send_rounded,
+                color: Colors.white,
+                size: 22,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildMessageBubble(ChatMessage message) {
     final isUser = message.isUser;
     return Align(
