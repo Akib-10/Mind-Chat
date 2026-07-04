@@ -114,6 +114,70 @@ class _PdfFeatureState extends State<PdfFeature> {
     });
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Ask AI about PDFs & Images'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.delete_outline),
+            tooltip: 'Clear chat',
+            onPressed: () {
+              setState(() {
+                _messages.clear();
+                _attachedFiles.clear();
+              });
+              _service.clearChat();
+            },
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: _messages.isEmpty
+                ? _buildEmptyState()
+                : ListView.builder(
+              controller: _scrollController,
+              padding: const EdgeInsets.only(
+                  top: 12, left: 12, right: 12, bottom: 12),
+              //itemCount use kori cz koyti msg ashbe tar number listView ke bolte
+              itemCount: _messages.length + (_isLoading ? 1 : 0),
+              //every index er jonno kemon widget banabo tar jonno itemBuilder
+              itemBuilder: (context, index) {
+                if (index == _messages.length) {
+                  return _buildTypingIndicator();
+                }
+                return _buildMessageBubble(_messages[index]);
+              },
+            ),
+          ),
+          if (_attachedFiles.isNotEmpty) _buildAttachmentPreview(),
+          _buildInputBar(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildEmptyState() {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.picture_as_pdf_outlined,
+              size: 64, color: Colors.grey.shade300),
+          const SizedBox(height: 12),
+          Text(
+            'Attach a PDF or image, add a question, and send!',
+            style: TextStyle(color: Colors.grey.shade500, fontSize: 15),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
+
 
 
   Widget _buildInputBar() {
