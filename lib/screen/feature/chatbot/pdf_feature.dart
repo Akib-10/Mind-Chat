@@ -193,7 +193,48 @@ class _PdfFeatureState extends State<PdfFeature> {
           final isImage = _isImageFile(file.path);
           final name = file.path.split('/').last;
 
-
+          return Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Container(
+                width: 90,
+                padding: const EdgeInsets.all(6),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade100,
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Colors.grey.shade300),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      isImage ? Icons.image : Icons.picture_as_pdf,
+                      color: Colors.deepPurple,
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontSize: 10),
+                    ),
+                  ],
+                ),
+              ),
+              Positioned(
+                top: -6,
+                right: -6,
+                child: GestureDetector(
+                  onTap: () => _removeAttachment(index),
+                  child: const CircleAvatar(
+                    radius: 10,
+                    backgroundColor: Colors.black54,
+                    child: Icon(Icons.close, size: 14, color: Colors.white),
+                  ),
+                ),
+              ),
+            ],
+          );
         },
       ),
     );
