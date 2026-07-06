@@ -179,6 +179,25 @@ class _PdfFeatureState extends State<PdfFeature> {
   }
 
 
+  //select kora file gular chip preview, send korar age
+  Widget _buildAttachmentPreview() {
+    return Container(
+      height: 76,
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: _attachedFiles.length,
+        separatorBuilder: (_, __) => const SizedBox(width: 8),
+        itemBuilder: (context, index) {
+          final file = _attachedFiles[index];
+          final isImage = _isImageFile(file.path);
+          final name = file.path.split('/').last;
+
+
+        },
+      ),
+    );
+  }
 
   Widget _buildInputBar() {
     return Padding(
