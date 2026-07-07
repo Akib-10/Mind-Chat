@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.mind_chat"
     //minimum compile sdk support
-    compileSdk = 35 //minimum 35 rekhechi
+    compileSdk = 36 //minimum 36 rekhechi
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
