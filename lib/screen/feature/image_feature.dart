@@ -16,17 +16,21 @@ class ImageFeature extends StatefulWidget {
 
 class _ImageFeatureState extends State<ImageFeature> {
   final TextEditingController _promptController = TextEditingController();
+  // AI theke asha Image store korte
   Uint8List? _generatedImage;
   bool _isLoading = false;
+  // API error hole message thakar jonno
   String? _errorMessage;
 
   Future<void> _generateImage() async {
+    // trim use kori 1st and last space remove korar jonno
     final prompt = _promptController.text.trim();
     if (prompt.isEmpty) {
       setState(() => _errorMessage = 'Please enter a prompt first.');
       return;
     }
 
+    // keyboard hide korar jonno, jeno image create hole keyboard cole jay
     FocusScope.of(context).unfocus();
     setState(() {
       _isLoading = true;
@@ -45,6 +49,7 @@ class _ImageFeatureState extends State<ImageFeature> {
 
   @override
   void dispose() {
+    //memory jeno leak na hoy
     _promptController.dispose();
     super.dispose();
   }
@@ -52,67 +57,7 @@ class _ImageFeatureState extends State<ImageFeature> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('AI Image Creator'),
-      ),
-      body: ListView(
-        physics: const BouncingScrollPhysics(),
-        padding: EdgeInsets.only(
-          top: mq.height * .02,
-          bottom: mq.width * .1,
-          left: mq.width * .04,
-          right: mq.width * .04,
-        ),
-        children: [
-          // text field
-          TextFormField(
-            controller: _promptController,
-            textAlign: TextAlign.center,
-            minLines: 2,
-            maxLines: null,
-            onTapOutside: (e) => FocusScope.of(context).unfocus(),
-            decoration: const InputDecoration(
-              hintText:
-              'Imagine something wonderful & innovative\nType here & I will create for you',
-              hintStyle: TextStyle(fontSize: 13.5),
-              border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-            ),
-          ),
 
-          if (_errorMessage != null) ...[
-            SizedBox(height: mq.height * .015),
-            Text(
-              _errorMessage!,
-              textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.red, fontSize: 13),
-            ),
-          ],
-
-          // ai image / preview area
-          Container(
-            height: mq.height * .5,
-            alignment: Alignment.center,
-            child: _isLoading
-                ? Lottie.asset('assets/lottie/ai_play.json', height: mq.height * .3)
-                : _generatedImage != null
-                ? ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.memory(
-                _generatedImage!,
-                fit: BoxFit.contain,
-              ),
-            )
-                : Lottie.asset('assets/lottie/ai_play.json', height: mq.height * .3),
-          ),
-
-          // create btn
-          CustomBtn(
-            text: _isLoading ? 'Creating...' : 'Create',
-            onTap: _isLoading ? () {} : _generateImage,
-          ),
-        ],
-      ),
     );
   }
 }
