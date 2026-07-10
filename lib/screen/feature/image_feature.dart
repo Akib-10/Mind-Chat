@@ -1,4 +1,4 @@
-import 'dart:typed_data';
+import 'dart:typed_data'; // image ke byte e neoyar jonno
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mind_chat/helper/global.dart';
@@ -57,7 +57,69 @@ class _ImageFeatureState extends State<ImageFeature> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('AI Image Creator'),
+      ),
+      body: ListView(
+        physics: const BouncingScrollPhysics(),
+        padding: EdgeInsets.only(
+          top: mq.height * .02,
+          bottom: mq.width * .1,
+          left: mq.width * .04,
+          right: mq.width * .04,
+        ),
+        children: [
+          // text field
+          TextFormField(
+            controller: _promptController,
+            textAlign: TextAlign.center,
+            minLines: 2,
+            maxLines: null,
+            // TextField er baire tap korle keyboard hide hobe
+            onTapOutside: (e) => FocusScope.of(context).unfocus(),
+            decoration: const InputDecoration(
+              hintText:
+              'Imagine something wonderful & innovative\nType here & I will create for you',
+              hintStyle: TextStyle(fontSize: 13.5),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+            ),
+          ),
 
+          if (_errorMessage != null) ...[
+            // error thakle jeno red color er text dekhai
+            SizedBox(height: mq.height * .015),
+            Text(
+              _errorMessage!,
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Colors.red, fontSize: 13),
+            ),
+          ],
+
+          // ai image / preview area
+          Container(
+            height: mq.height * .5,
+            alignment: Alignment.center,
+            child: _isLoading
+                ? Lottie.asset('assets/lottie/ai_play.json', height: mq.height * .3)
+                : _generatedImage != null
+                ? ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image.memory(
+                _generatedImage!,
+                fit: BoxFit.contain,
+              ),
+            )
+                : Lottie.asset('assets/lottie/ai_play.json', height: mq.height * .3),
+          ),
+
+          // create btn
+          CustomBtn(
+            text: _isLoading ? 'Creating...' : 'Create',
+            onTap: _isLoading ? () {} : _generateImage,
+          ),
+        ],
+      ),
     );
   }
 }
