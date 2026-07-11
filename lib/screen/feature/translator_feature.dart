@@ -177,7 +177,65 @@ class _TranslatorFeatureState extends State<TranslatorFeature> {
             ],
           ),
 
+          // text field
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: mq.width * .04,
+              vertical: mq.height * .035,
+            ),
+            child: TextFormField(
+              controller: _inputController,
+              textAlign: TextAlign.center,
+              minLines: 5,
+              maxLines: null,
+              onTapOutside: (e) => FocusScope.of(context).unfocus(),
+              decoration: const InputDecoration(
+                hintText: 'Translate anything you want......',
+                hintStyle: TextStyle(fontSize: 13.5),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+              ),
+            ),
+          ),
 
+          if (_errorMessage != null)
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: mq.width * .04),
+              child: Text(
+                _errorMessage!,
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.red, fontSize: 13),
+              ),
+            ),
+
+          SizedBox(height: mq.height * .015),
+
+          // result field
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: mq.width * .04,
+            ),
+            child: TextFormField(
+              controller: _resultController,
+              readOnly: true,
+              textAlign: TextAlign.center,
+              maxLines: null,
+              onTapOutside: (e) => FocusScope.of(context).unfocus(),
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+              ),
+            ),
+          ),
+
+          SizedBox(height: mq.height * .04),
+
+          CustomBtn(
+            text: _isLoading ? 'Translating...' : 'Translate',
+            onTap: _isLoading ? () {} : _translate,
+          ),
         ],
       ),
     );
