@@ -40,6 +40,15 @@ Text to translate:
 """$text"""
 ''';
 
-
+    try {
+      final response = await _model.generateContent([Content.text(prompt)]);
+      final result = response.text?.trim();
+      if (result == null || result.isEmpty) {
+        throw Exception('No translation returned.');
+      }
+      return result;
+    } catch (e) {
+      throw Exception('Translation failed: ${e.toString().replaceFirst('Exception: ', '')}');
+    }
   }
 }
