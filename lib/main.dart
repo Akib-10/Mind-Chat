@@ -67,3 +67,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+extension AppTheme on ThemeData {
+  Color get lightTextColor =>
+      brightness == Brightness.dark ? Colors.white70 : Colors.black54;
+}
