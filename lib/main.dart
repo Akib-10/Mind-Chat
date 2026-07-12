@@ -29,6 +29,25 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: appName,
       debugShowCheckedModeBanner: false,
+
+      themeMode: ThemeMode.dark,
+
+      darkTheme: ThemeData(
+        useMaterial3: false,
+          brightness: Brightness.dark,
+          appBarTheme: const AppBarTheme(
+            elevation: 1,
+            centerTitle: true,
+            backgroundColor: Colors.white,
+            iconTheme: IconThemeData(color: Colors.blue),
+            titleTextStyle: TextStyle(
+              color: Colors.blue,
+              fontSize: 20,
+              fontWeight: FontWeight.w500,
+            ),
+          )
+      ),
+
       //For all pages same AppBar
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
