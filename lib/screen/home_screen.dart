@@ -30,16 +30,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       //app bar
       appBar: AppBar(
-        elevation: 3,
-        centerTitle: true,
-        backgroundColor: Colors.white,
         title: const Text(
           appName,
-          style: TextStyle(
-            color: Colors.blue,
-            fontSize: 20,
-            fontWeight: FontWeight.w500
-          ),
         ),
           //actions button
         actions: [
@@ -48,7 +40,6 @@ class _HomeScreenState extends State<HomeScreen> {
           onPressed: () {},
           icon: const Icon(
             Icons.brightness_4_rounded,
-            color: Colors.blue,
             size: 26,
           ))
         ],

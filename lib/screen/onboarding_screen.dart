@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mind_chat/helper/global.dart';
+import 'package:mind_chat/main.dart';
 import 'package:mind_chat/model/onboard.dart';
 import 'package:mind_chat/screen/home_screen.dart';
 import 'package:mind_chat/widget/custom_btn.dart';
@@ -62,7 +63,7 @@ class OnboardingScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 13.5,
                       letterSpacing: .5,
-                      color: Colors.black87,
+                      color: Theme.of(context).lightTextColor,
                     ),
                   ),
                 ),

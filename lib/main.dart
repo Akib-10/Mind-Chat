@@ -38,10 +38,7 @@ class MyApp extends StatelessWidget {
           appBarTheme: const AppBarTheme(
             elevation: 1,
             centerTitle: true,
-            backgroundColor: Colors.white,
-            iconTheme: IconThemeData(color: Colors.blue),
             titleTextStyle: TextStyle(
-              color: Colors.blue,
               fontSize: 20,
               fontWeight: FontWeight.w500,
             ),
@@ -69,6 +66,11 @@ class MyApp extends StatelessWidget {
 }
 
 extension AppTheme on ThemeData {
+  //light text color
   Color get lightTextColor =>
       brightness == Brightness.dark ? Colors.white70 : Colors.black54;
+
+  //button color
+  Color get buttonColor =>
+      brightness == Brightness.dark ? Colors.cyan.withOpacity(.5) : Colors.blue;
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mind_chat/main.dart';
 
 import '../helper/global.dart';
 
@@ -13,7 +14,8 @@ class CustomBtn extends StatelessWidget {
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             shape: const StadiumBorder(),
-            elevation: 2, // shadow removw kore
+            elevation: 2, // shadow remove kore
+            backgroundColor: Theme.of(context).buttonColor,
             textStyle: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,
