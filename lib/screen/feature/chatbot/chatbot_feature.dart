@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mind_chat/main.dart';
 import 'chat_message.dart';
 import 'chatbot_service.dart';
 
@@ -120,12 +121,12 @@ class _ChatbotFeatureState extends State<ChatbotFeature> {
                 onTapOutside: (e) => FocusScope.of(context).unfocus(),
                 onFieldSubmitted: (_) => _sendMessage(),
                 maxLines: null,
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                   isDense: true,
                   hintText: 'Ask me anything you want.....',
                   hintStyle: TextStyle(fontSize: 14),
                   filled: true,
-                  fillColor: Colors.white,
+                  fillColor: Theme.of(context).scaffoldBackgroundColor,
                   contentPadding:
                   EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   border: OutlineInputBorder(
@@ -137,7 +138,8 @@ class _ChatbotFeatureState extends State<ChatbotFeature> {
             const SizedBox(width: 8),
             CircleAvatar(
               radius: 24,
-              backgroundColor: _isLoading ? Colors.grey : null,
+              backgroundColor: _isLoading ?
+              Theme.of(context).buttonColor : null,
               child: IconButton(
                 onPressed: _isLoading ? null : _sendMessage,
                 icon: Icon(
@@ -186,7 +188,7 @@ class _ChatbotFeatureState extends State<ChatbotFeature> {
         decoration: BoxDecoration(
           color: isUser
               ? Theme.of(context).colorScheme.primary
-              : Colors.grey.shade200,
+              : Theme.of(context).colorScheme.primary,
           borderRadius: BorderRadius.only(
             topLeft: const Radius.circular(16),
             topRight: const Radius.circular(16),
@@ -197,7 +199,7 @@ class _ChatbotFeatureState extends State<ChatbotFeature> {
         child: Text(
           message.text,
           style: TextStyle(
-            color: isUser ? Colors.white : Colors.black87,
+            color: isUser ? Colors.white : Colors.white,
             fontSize: 15,
           ),
         ),
