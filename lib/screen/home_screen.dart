@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -52,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ? Icons.brightness_2_rounded
                 : Icons.brightness_5_rounded,
             size: 26,
-          ))
+          )))
         ],
       ),
       body: ListView(
