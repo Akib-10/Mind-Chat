@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:mind_chat/main.dart';
 import 'chat_message.dart';
 import 'chatbot_service.dart';
 
@@ -258,12 +259,12 @@ class _PdfFeatureState extends State<PdfFeature> {
               onTapOutside: (e) => FocusScope.of(context).unfocus(),
               onFieldSubmitted: (_) => _sendMessage(),
               maxLines: null,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 isDense: true,
                 hintText: 'Type your question here...',
                 hintStyle: TextStyle(fontSize: 14),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Theme.of(context).scaffoldBackgroundColor,
                 contentPadding:
                 EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                 border: OutlineInputBorder(
@@ -274,7 +275,7 @@ class _PdfFeatureState extends State<PdfFeature> {
           ),
           const SizedBox(width: 8),
           CircleAvatar(
-            radius: 24,
+            radius: 21,
             backgroundColor: _isLoading ? Colors.grey : null,
             child: IconButton(
               onPressed: _isLoading ? null : _sendMessage,
@@ -301,9 +302,7 @@ class _PdfFeatureState extends State<PdfFeature> {
           maxWidth: MediaQuery.of(context).size.width * 0.75,
         ),
         decoration: BoxDecoration(
-          color: isUser
-              ? Theme.of(context).colorScheme.primary
-              : Colors.grey.shade200,
+          color: Theme.of(context).buttonColor,
           borderRadius: BorderRadius.only(
             topLeft: const Radius.circular(16),
             topRight: const Radius.circular(16),
@@ -314,7 +313,7 @@ class _PdfFeatureState extends State<PdfFeature> {
         child: SelectableText(
           message.text,
           style: TextStyle(
-            color: isUser ? Colors.white : Colors.black87,
+            color: Colors.black87,
             fontSize: 15,
           ),
         ),

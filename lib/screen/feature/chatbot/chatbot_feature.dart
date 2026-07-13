@@ -197,7 +197,7 @@ class _ChatbotFeatureState extends State<ChatbotFeature> {
         child: Text(
           message.text,
           style: TextStyle(
-            color: isUser ? Colors.white : Colors.white,
+            color: Colors.white,
             fontSize: 15,
           ),
         ),

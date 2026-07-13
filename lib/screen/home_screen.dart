@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 _isDarkMode.value ? ThemeMode.light : ThemeMode.dark
             );
             _isDarkMode.value = !_isDarkMode.value;
-            Pref.isDarkMode = !_isDarkMode.value;
+            Pref.isDarkMode = _isDarkMode.value;
           },
           icon: Obx( () => Icon(
             _isDarkMode.value
