@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:mind_chat/model/home_type.dart';
 import 'package:mind_chat/widget/home_card.dart';
 
@@ -16,6 +17,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  final _isDarkMode = Get.isDarkMode.obs;
   @override
   void initState() {
     // TODO: implement initState
@@ -37,9 +40,17 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           IconButton(
           padding: const EdgeInsets.only(right: 5),
-          onPressed: () {},
-          icon: const Icon(
-            Icons.brightness_4_rounded,
+          onPressed: () {
+            Get.changeThemeMode(
+                _isDarkMode.value ? ThemeMode.light : ThemeMode.dark
+            );
+            _isDarkMode.value = !_isDarkMode.value;
+            Pref.isDarkMode = !_isDarkMode.value;
+          },
+          icon: Obx( () => Icon(
+            _isDarkMode.value
+                ? Icons.brightness_2_rounded
+                : Icons.brightness_5_rounded,
             size: 26,
           ))
         ],
