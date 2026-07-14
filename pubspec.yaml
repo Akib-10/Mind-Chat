@@ -35,6 +35,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
 #  ioS Styled Icons
   cupertino_icons: ^1.0.8
+#  For changing app icon
+  icons_launcher: ^3.1.0
 #  For using lottie animations
   lottie: ^3.3.3
 #  For hive Database
