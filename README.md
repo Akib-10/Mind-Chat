@@ -1,6 +1,11 @@
 # mind_chat
 
-A new Flutter project.
+A Flutter-based AI companion app built as a hands-on learning project to explore 
+Flutter/Dart development alongside practical AI integrations — chat, image generation, 
+translation, and document intelligence, all in one app.
+
+## ✨ Features
+
 
 ## Getting Started
 
