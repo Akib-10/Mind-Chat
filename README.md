@@ -24,22 +24,22 @@ Full support for both light and dark UI modes, switchable from within the app.
 
 # Getting Started
 
-## Prerequisites
+### Prerequisites
 - Flutter SDK installed (flutter.dev/docs/get-started/install)
 - A Google Gemini API key (aistudio.google.com)
 - A Hugging Face access token (huggingface.co/settings/tokens)
 
-## Installation
-### 1. Clone the repo
+### Installation
+#### 1. Clone the repo
 - git clone https://github.com/Akib-10/mind_chat.git
 - cd mind_chat
-### 2. Install Dependencies
+#### 2. Install Dependencies
 - flutter pub get
-### 3. Set up environment variables
+#### 3. Set up environment variables
 Create a .env file in the project root:
 - GEMINI_API_KEY=your_gemini_api_key_here
-  HF_API_KEY=your_huggingface_token_here
-### 4. Run The App
+- HF_API_KEY=your_huggingface_token_here
+#### 4. Run The App
 - flutter run
 ## Notes
 - Image generation uses Hugging Face's free-tier hf-inference provider — response times may vary 
